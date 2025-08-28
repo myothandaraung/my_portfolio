@@ -43,5 +43,6 @@ export default defineConfig({
   },
   server: {
     port: 3399
-  }
+  },
+  base: '/my_portfolio/',
 })

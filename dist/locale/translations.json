@@ -1,0 +1,292 @@
+{
+    "en": {
+      "nav": ["About", "Skills", "Projects", "Portfolio", "Contact"],
+      "searchPlaceholder": "Search section...",
+      "hero": {
+        "hello": "HELLO, I'M",
+        "title": "Full Stack Developer",
+        "tagline": "Modern Web Solutions, Built to Scale",
+        "description": "Passionate about building scalable web applications, crafting modern interfaces, and delivering solutions that empower businesses.",
+        "contactButton": "Contact Me"
+      },
+      "categories": [
+      "App Design",
+      "Website Design",
+      "Dashboard",
+      "Wireframe",
+      "Branding",
+      "UI/UX Design",
+      "Illustrations",
+      "Mobile Development",
+      "Web Development"
+    ],
+    "about": {
+      "title": "About Me",
+      "intro": "I graduated in 2020 from the University of Computer Studies, Thaton, with a major in Computer Science. Since then, I have been working as a Web Developer, gaining over 4 years of professional experience in building web applications and backend systems.",
+      "details": "I have contributed to projects using a wide range of technologies including <span class='text-[#64ffda] font-semibold'>PHP, React, Vue, C#, HTML, CSS, SCSS, JavaScript, jQuery, Git</span>, and SourceTree. My technical expertise covers coding, responsive design, browser testing, and mobile-friendly development.",
+      "experience": "I am experienced in both small and large teams, consistently ensuring project efficiency and high-quality outcomes. With strong problem-solving skills and a keen eye for detail, I strive to deliver modern, reliable, and high-performance solutions."
+    },
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "ReactJS",
+      "VueJS",
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "Tailwind CSS"
+    ],
+    "projects": [
+      {
+        "title": "POS System",
+        "company": "Seattle Consulting Myanmar",
+        "dates": "06/2020 - 08/2020",
+        "description": "A sale and inventory management system with barcode scanning and receipt generation.",
+        "technologies": ["C#", ".NET", "PHP", "PostgreSQL"],
+        "image": "../images/pos-system.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Media Management System",
+        "company": "Seattle Consulting Myanmar",
+        "dates": "09/2020 - 07/2021",
+        "description": "An advertising and report management system for media with analytics dashboard.",
+        "technologies": ["React", "Bootstrap", "SCSS", "Redux Saga"],
+        "image": "../images/media-management.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Glove Simulation System",
+        "company": "Seattle Consulting Myanmar",
+        "dates": "09/2021 - 12/2021",
+        "description": "A 3D configurator for customizing and ordering baseball gloves with real-time preview.",
+        "technologies": ["PHP", "Laravel", "MySQL", "Three.js", "JavaScript"],
+        "image": "../images/glove-simulation.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Travel and Tour System",
+        "company": "Seattle Consulting Myanmar",
+        "dates": "01/2022 - 02/2022",
+        "description": "A comprehensive system for managing tour packages, bookings, and customer relationships.",
+        "technologies": ["PHP", "Laravel", "MySQL", "Vue.js", "REST API"],
+        "image": "../images/travel-tour-system.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Evaluation Management System Administrator and App",
+        "company": "Seattle Consulting Myanmar",
+        "dates": "03/2022 - 08/2022",
+        "description": "A system for the evaluation of shop managers and staff, including commitments and MVP points.",
+        "technologies": ["PHP", "Laravel", "MySQL", "HTML", "Angular", "Ionic"],
+        "image": "../images/evaluation-management.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Class Management System",
+        "company": "Seattle Consulting Myanmar",
+        "dates": "09/2022 - 11/2022",
+        "description": "A system for the management of students, classes, courses, and schedules.",
+        "technologies": ["PHP", "MySQL", "VueJS"],
+        "image": "../images/class-management-system.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Online Order Management System",
+        "company": "Seattle Consulting Myanmar",
+        "dates": "12/2022 - 05/2023",
+        "description": "A system for ordering kitchen products and managing payment data.",
+        "technologies": ["PHP", "Zend Framework", "MySQL"],
+        "image": "../images/online-order.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Online Translation System",
+        "company": "Seattle Consulting Myanmar",
+        "dates": "10/2023 - 05/2024",
+        "description": "A system for managing Japanese translation services.",
+        "technologies": ["PHP", "Laravel", "MySQL", "ReactJS"],
+        "image": "../images/online-translation.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Professional Craftsmen Borrowing System",
+        "company": "",
+        "dates": "01/2025 - current",
+        "description": "A platform that connects clients directly with skilled carpenters for small construction projects, cutting out middlemen and extra costs.",
+        "technologies": ["PHP", "Laravel", "VueJS", "Tailwind CSS", "Docker", "MySQL"],
+        "image": "../images/craftsman-borrowing-system.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Excel Importer",
+        "company": "",
+        "dates": "06/2025 - current",
+        "description": "A system that manages Excel upload files, upload patterns, and imports data.",
+        "technologies": ["PHP", "Laravel", "VueJS", "Tailwind CSS", "Docker", "MySQL"],
+        "image": "../images/excel-importer.jpg",
+        "link": "#"
+      }
+    ],
+    "contact": {
+      "title": "LET'S HAVE A CHAT",
+      "name": "YOUR NAME",
+      "email": "YOUR EMAIL",
+      "phone": "YOUR PHONE",
+      "subject": "SUBJECT",
+      "message": "YOUR MESSAGE",
+      "sendButton": "SEND MESSAGE"
+    },
+    "footer" : {
+      "text": "{{year}} Myo Thandar Aung. All rights reserved.",
+      "builtWith": "Built with ❤️ using React and Tailwind CSS",
+      "social": "Social"
+    }
+  },
+  "ja": {
+      "nav": ["自己紹介", "スキル", "プロジェクト", "ポートフォリオ", "お問い合わせ"],
+      "searchPlaceholder": "セクションを検索...",
+      "hero": {
+        "hello": "こんにちは、私は",
+        "title": "フルスタック開発者",
+        "tagline": "現代のウェブのためのスケーラブルなウェブソリューションを構築しています。",
+        "description": "ビジネスを強化するスケーラブルなウェブアプリケーションを構築し、現代のインターフェースを創造し、ソリューションを提供することに熱意があります。",
+        "contactButton": "私と連絡を取りましょう"
+      },
+      "categories": [
+      "アプリデザイン",
+      "ウェブサイトデザイン",
+      "ダッシュボード",
+      "ワイヤーフレーム",
+      "ブランディング",
+      "UI/UXデザイン",
+      "イラスト",
+      "モバイル開発",
+      "ウェブ開発"
+    ],
+    "about": {
+      "title": "私について",
+      "intro": "私は2020年にタトンのコンピュータ大学を卒業し、コンピュータサイエンスを専攻しました。それ以来、ウェブ開発者として4年以上の経験を積み、ウェブアプリケーションやバックエンドシステムの構築に従事しています。",
+      "details": "私は <span class='text-[#64ffda] font-semibold'>PHP、リアクト、Vue、C#、HTML、CSS、SCSS、JavaScript、jQuery、Git</span> などの幅広い技術を用いたプロジェクトに貢献してきました。技術的な専門知識にはコーディング、レスポンシブデザイン、ブラウザテスト、モバイルフレンドリー開発が含まれます。",
+      "experience": "私は小規模チームおよび大規模チームの両方で経験があり、プロジェクトの効率性と高品質な成果を常に確保しています。問題解決能力が高く、細部への注意力を持ち、モダンで信頼性の高い高性能ソリューションを提供することを目指しています。"
+    },
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "ReactJS",
+      "VueJS",
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "Tailwind CSS"
+    ],
+    "projects": [
+      {
+        "title": "POSシステム",
+        "company": "シアトルコンサルティングミャンマー",
+        "dates": "2020/06 - 2020/08",
+        "description": "バーコードスキャンとレシート生成機能を備えた販売および在庫管理システム。",
+        "technologies": ["C#", ".NET", "PHP", "PostgreSQL"],
+        "image": "/images/pos-system.jpg",
+        "link": "#"
+      },
+      {
+        "title": "メディア管理システム",
+        "company": "シアトルコンサルティングミャンマー",
+        "dates": "2020/09 - 2021/07",
+        "description": "分析ダッシュボード付きのメディア用広告およびレポート管理システム。",
+        "technologies": ["React", "Bootstrap", "SCSS", "Redux Saga"],
+        "image": "/images/media-management.jpg",
+        "link": "#"
+      },
+      {
+        "title": "グローブシミュレーションシステム",
+        "company": "シアトルコンサルティングミャンマー",
+        "dates": "2021/09 - 2021/12",
+        "description": "野球グローブをリアルタイムプレビューでカスタマイズおよび注文できる3Dコンフィギュレーター。",
+        "technologies": ["PHP", "Laravel", "MySQL", "Three.js", "JavaScript"],
+        "image": "/images/glove-simulation.jpg",
+        "link": "#"
+      },
+      {
+        "title": "旅行・ツアー管理システム",
+        "company": "シアトルコンサルティングミャンマー",
+        "dates": "2022/01 - 2022/02",
+        "description": "ツアーパッケージ、予約、顧客関係を管理する包括的なシステム。",
+        "technologies": ["PHP", "Laravel", "MySQL", "Vue.js", "REST API"],
+        "image": "/images/travel-tour-system.jpg",
+        "link": "#"
+      },
+      {
+        "title": "評価管理システム（管理者およびアプリ）",
+        "company": "シアトルコンサルティングミャンマー",
+        "dates": "2022/03 - 2022/08",
+        "description": "店舗マネージャーおよびスタッフの評価を行うシステム（コミットメントやMVPポイント含む）。",
+        "technologies": ["PHP", "Laravel", "MySQL", "HTML", "Angular", "Ionic"],
+        "image": "/images/evaluation-management.jpg",
+        "link": "#"
+      },
+      {
+        "title": "クラス管理システム",
+        "company": "シアトルコンサルティングミャンマー",
+        "dates": "2022/09 - 2022/11",
+        "description": "学生、クラス、コース、スケジュールを管理するシステム。",
+        "technologies": ["PHP", "MySQL", "VueJS"],
+        "image": "/images/class-management-system.jpg",
+        "link": "#"
+      },
+      {
+        "title": "オンライン注文管理システム",
+        "company": "シアトルコンサルティングミャンマー",
+        "dates": "2022/12 - 2023/05",
+        "description": "キッチン製品の注文および支払いデータを管理するシステム。",
+        "technologies": ["PHP", "Zend Framework", "MySQL"],
+        "image": "/images/online-order.jpg",
+        "link": "#"
+      },
+      {
+        "title": "オンライン翻訳システム",
+        "company": "シアトルコンサルティングミャンマー",
+        "dates": "2023/10 - 2024/05",
+        "description": "日本語翻訳サービスを管理するシステム。",
+        "technologies": ["PHP", "Laravel", "MySQL", "ReactJS"],
+        "image": "/images/online-translation.jpg",
+        "link": "#"
+      },
+      {
+        "title": "職人マッチングプラットフォーム",
+        "company": "",
+        "dates": "2025/01 - 現在",
+        "description": "クライアントと熟練職人を直接つなぐプラットフォーム。中間業者や余分なコストを排除。",
+        "technologies": ["PHP", "Laravel", "VueJS", "Tailwind CSS", "Docker", "MySQL"],
+        "image": "/images/craftsman-borrowing-system.jpg",
+        "link": "#"
+      },
+      {
+        "title": "Excelインポーター",
+        "company": "",
+        "dates": "2025/06 - 現在",
+        "description": "Excelアップロードファイル、パターンのアップロード、データのインポートを管理するシステム。",
+        "technologies": ["PHP", "Laravel", "VueJS", "Tailwind CSS", "Docker", "MySQL"],
+        "image": "/images/excel-importer.jpg",
+        "link": "#"
+      }
+    ],
+    "contact": {
+      "title": "お問い合わせ",
+      "name": "名前",
+      "email": "メールアドレス",
+      "phone": "電話番号",
+      "subject": "件名",
+      "message": "メッセージ",
+      "sendButton": "送信"
+    },
+    "footer": {
+      "text": "{{year}} Myo Thandar Aung。全ての権利を保有。",
+      "builtWith": "React と Tailwind CSS を使って ❤️ 作成",
+      "social": "ソーシャル"
+    }
+  }
+}
