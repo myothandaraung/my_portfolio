@@ -1,6 +1,6 @@
 {
     "en": {
-      "nav": ["About", "Skills", "Projects", "Portfolio", "Contact"],
+      "nav": ["About", "Skills", "Projects", "Portfolio", "ContactMe"],
       "searchPlaceholder": "Search section.",
       "hero": {
         "hello": "HELLO, I'M",
