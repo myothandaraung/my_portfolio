@@ -6,7 +6,7 @@ import {
   FaLinkedinIn,
   FaWhatsapp,
 } from "react-icons/fa";
-import profileImage from "../assets/MYOTHANDARAUNGPC.jpeg";
+import profileImage from "../assets/profile.png";
 
 function HeroSection() {
   const { t } = useTranslation();
