@@ -149,7 +149,7 @@ function Header() {
           {/* Search */}
           <form
             onSubmit={handleSearchSubmit}
-            className="relative hidden sm:block"
+            className="relative block sm:block" // make it block on all screen sizes
           >
             <input
               type="text"
@@ -157,11 +157,15 @@ function Header() {
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
-                handleSearchSubmit(e.target.value); // call search on each change
+                // remove this to prevent infinite loop
+                // handleSearchSubmit(e.target.value);
               }}
-              className="bg-white/10 border border-gray-600 rounded-full py-1.5 pl-4 pr-10 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#64ffda] focus:border-[#64ffda] transition-all duration-300"
+              className="bg-white/10 border border-gray-600 rounded-full py-1.5 pl-4 pr-10 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#64ffda] focus:border-[#64ffda] transition-all duration-300 w-full"
             />
-            <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#64ffda]">
+            <button
+              type="submit"
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#64ffda]"
+            >
               <FaSearch />
             </button>
           </form>
