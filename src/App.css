@@ -360,6 +360,23 @@ mark.active-highlight {
   color: black;
   font-weight: bold;
 }
+
+/* Search Highlight Styling */
+.search-highlight {
+  background-color: #64ffda;
+  color: #0a192f;
+  padding: 1px 3px;
+  border-radius: 2px;
+  font-weight: 600;
+  animation: highlight-pulse 0.5s ease-in-out;
+}
+
+@keyframes highlight-pulse {
+  0% { background-color: #64ffda; transform: scale(1); }
+  50% { background-color: #2dd9c6; transform: scale(1.05); }
+  100% { background-color: #64ffda; transform: scale(1); }
+}
+
 @keyframes fadeSlideUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }

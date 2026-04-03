@@ -33,8 +33,104 @@ function Header() {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // Your existing search logic...
+    if (!searchQuery.trim()) return;
+
+    // Clear previous highlights
+    clearHighlights();
+
+    // Search in specific sections
+    const sections = [
+      'hero-section',
+      'who-am-i-section', 
+      'my-skills-section',
+      'skills',
+      'projects',
+      'contact'
+    ];
+
+    let found = false;
+    let firstMatch = null;
+
+    sections.forEach(sectionId => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const textContent = section.textContent || section.innerText;
+        const regex = new RegExp(searchQuery, 'gi');
+        
+        if (regex.test(textContent)) {
+          found = true;
+          if (!firstMatch) {
+            firstMatch = sectionId;
+          }
+          
+          // Highlight matches
+          highlightText(section, searchQuery);
+        }
+      }
+    });
+
+    if (found && firstMatch) {
+      // Scroll to first match
+      const element = document.getElementById(firstMatch);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   };
+
+  const highlightText = (element, query) => {
+    if (!element || !query) return;
+
+    const walker = document.createTreeWalker(
+      element,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: function(node) {
+          // Skip script and style elements
+          const parent = node.parentElement;
+          if (parent && (parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+
+    const textNodes = [];
+    let node;
+    while (node = walker.nextNode()) {
+      if (node.textContent.trim()) {
+        textNodes.push(node);
+      }
+    }
+
+    textNodes.forEach(textNode => {
+      const text = textNode.textContent;
+      const regex = new RegExp(`(${query})`, 'gi');
+      
+      if (regex.test(text)) {
+        const span = document.createElement('span');
+        span.innerHTML = text.replace(regex, '<mark class="search-highlight">$1</mark>');
+        textNode.parentNode.replaceChild(span, textNode);
+      }
+    });
+  };
+
+  const clearHighlights = () => {
+    const highlights = document.querySelectorAll('.search-highlight');
+    highlights.forEach(highlight => {
+      const parent = highlight.parentNode;
+      parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+      parent.normalize();
+    });
+  };
+
+  // Clear highlights when search query changes
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      clearHighlights();
+    }
+  }, [searchQuery]);
 
   return (
     <header
