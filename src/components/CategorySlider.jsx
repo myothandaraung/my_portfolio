@@ -13,7 +13,6 @@ function CategorySlider() {
 
   const categories = t("categories", { returnObjects: true }) || [];
   const aiIcons = [FaServer, FaBrain, FaNetworkWired, FaRobot, FaCode, FaMicrochip, FaSatellite];
-  const techSymbols = ['{ }', '< />', '[ ]', '( )', '||', '&&', '++', '--'];
 
   // Drag state
   const [isDragging, setIsDragging] = useState(false);
@@ -257,16 +256,6 @@ function CategorySlider() {
                     
                     <span className="relative z-10">{category}</span>
                     
-                    {/* Tech Symbols */}
-                    {aiMode && hoveredCategory === category && (
-                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex space-x-1">
-                        {techSymbols.slice(0, 3).map((symbol, idx) => (
-                          <span key={idx} className="text-xs text-[#64ffda] font-mono animate-pulse" style={{ animationDelay: `${idx * 0.1}s` }}>
-                            {symbol}
-                          </span>
-                        ))}
-                      </div>
-                    )}
                   </button>
                   
                   {/* Status Indicator */}
@@ -304,26 +293,6 @@ function CategorySlider() {
         </button>
         
         {/* Floating Tech Symbols */}
-        {aiMode && (
-          <div className="absolute top-0 left-1/4 flex space-x-2 opacity-50">
-            {techSymbols.slice(4, 7).map((symbol, idx) => (
-              <span key={idx} className="text-xs text-purple-400 font-mono animate-float-slow" style={{ animationDelay: `${idx * 0.3}s` }}>
-                {symbol}
-              </span>
-            ))}
-          </div>
-        )}
-        
-        {/* Bottom Tech Line */}
-        {aiMode && (
-          <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-2 px-8">
-            {techSymbols.map((symbol, idx) => (
-              <span key={idx} className="text-xs text-[#64ffda] font-mono animate-pulse opacity-30" style={{ animationDelay: `${idx * 0.2}s` }}>
-                {symbol}
-              </span>
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Hide Scrollbar */}

@@ -10,14 +10,7 @@ function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [aiMode, setAiMode] = useState(false);
-  const [neuralActivity, setNeuralActivity] = useState([]);
-  const [matrixRain, setMatrixRain] = useState([]);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [hoveredNavItem, setHoveredNavItem] = useState(null);
-  const matchesRef = useRef([]);
-  const currentIndexRef = useRef(-1);
-
-  const aiIcons = [FaServer, FaBrain, FaNetworkWired, FaRobot, FaCode, FaMicrochip, FaSatellite];
 
   const navItems = t("nav", { returnObjects: true }) || ["About", "Skills", "Projects", "Portfolio", "Contact"];
 
@@ -134,147 +127,122 @@ function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${
         scrolled
-          ? "bg-[#0a192f]/95 shadow-2xl backdrop-blur-lg py-1"
-          : "bg-transparent py-3 md:py-5"
+          ? "bg-[#0a192f]/90 shadow-[0_10px_30px_-10px_rgba(2,12,27,0.7)] backdrop-blur-md py-3"
+          : "bg-transparent py-8"
       }`}
     >
-      {/* AI Background Layer - Set to pointer-events-none so it doesn't block clicks */}
-      {aiMode && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-          <div className="absolute inset-0 opacity-10">
-            {matrixRain.map((drop, i) => (
-              <div key={i} className="absolute text-[#64ffda] font-mono text-[10px] animate-fall"
-                style={{ left: `${drop.x}%`, top: `-10%`, animationDuration: `${drop.speed}s` }}>
-                {drop.char}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="flex justify-between items-center">
           
-          {/* LEFT: Logo Section */}
-          <div className="flex-shrink-0 flex items-center">
-            <a href="#" className="relative group flex items-center">
-              <div className="relative w-10 h-10 md:w-14 md:h-14">
-                {/* Quantum Ring */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#64ffda] via-purple-500 to-pink-500 p-[1px] animate-spin-slow">
-                  <div className="w-full h-full rounded-full bg-[#0a192f]"></div>
-                </div>
-                {/* Logo Image */}
-                <div className="relative w-full h-full rounded-full flex items-center justify-center overflow-hidden bg-[#0a192f] group-hover:scale-105 transition-transform">
-                  <img src={myLogo} alt="Logo" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
-                </div>
+          {/* LEFT: Elegant Logo */}
+          <div className="flex-shrink-0">
+            <a href="#" className="relative flex items-center group">
+              <div className="relative w-12 h-12 flex items-center justify-center">
+                {/* Thin Geometric Frame - Replaces the thick gradient ring */}
+                <div className="absolute inset-0 border border-[#64ffda]/30 rotate-45 group-hover:rotate-90 transition-transform duration-1000 ease-in-out"></div>
+                <img src={myLogo} alt="Logo" className="w-6 h-6 object-contain relative z-10" />
               </div>
             </a>
           </div>
 
-          {/* CENTER: Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-10 text-sm xl:text-base font-medium">
+          {/* CENTER: Editorial Navigation */}
+          <nav className="hidden lg:flex items-center space-x-12">
             {navItems.map((item, idx) => (
               <a
                 key={idx}
                 href={`#${item.toLowerCase()}`}
-                className="group relative text-gray-300 hover:text-[#64ffda] transition-colors py-2"
-                onMouseEnter={() => setHoveredNavItem(item)}
-                onMouseLeave={() => setHoveredNavItem(null)}
+                className="group relative text-[11px] uppercase tracking-[0.3em] font-medium text-gray-300 hover:text-[#64ffda] transition-colors duration-500"
               >
-                <div className="flex items-center space-x-2">
-                  {aiMode && React.createElement(aiIcons[idx % aiIcons.length], { className: "text-xs opacity-70 group-hover:opacity-100" })}
-                  <span>{item}</span>
-                </div>
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#64ffda] transition-all duration-300 group-hover:w-full"></span>
+                <span className="relative z-10">{item}</span>
+                {/* Ultra-thin animated underline */}
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#64ffda] transition-all duration-500 ease-out group-hover:w-full"></span>
               </a>
             ))}
           </nav>
 
-          {/* RIGHT: Controls (Search, AI Toggle, Lang, Mobile Menu) */}
-          <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-5">
+          {/* RIGHT: Controls */}
+          <div className="flex items-center space-x-8">
             
-            {/* Search Bar - Responsive width */}
-            <form onSubmit={handleSearchSubmit} className="relative group">
+            {/* Minimalist Search - Bottom Border only */}
+            <form onSubmit={handleSearchSubmit} className="relative hidden md:flex items-center">
               <input
                 type="text"
-                placeholder={isSearchFocused ? "Neural Search..." : "Search..."}
+                placeholder="SEARCH"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => setIsSearchFocused(true)}
                 onBlur={() => setIsSearchFocused(false)}
-                className={`bg-white/5 border border-white/10 rounded-full py-1.5 px-4 text-xs transition-all duration-500 focus:w-40 md:focus:w-64 focus:bg-white/10 focus:border-[#64ffda] outline-none text-white ${
-                  isSearchFocused ? "w-32 md:w-64" : "w-20 md:w-40"
+                className={`bg-transparent border-b border-white/10 py-1 text-[10px] tracking-[0.2em] transition-all duration-700 outline-none text-white focus:border-[#64ffda] ${
+                  isSearchFocused ? "w-48" : "w-16 opacity-60"
                 }`}
               />
-              <FaSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-[10px] sm:text-xs pointer-events-none" />
+              <FaSearch className={`ml-2 text-[10px] transition-colors ${isSearchFocused ? "text-[#64ffda]" : "text-gray-400"}`} />
             </form>
 
-            {/* AI Toggle */}
+            {/* AI Toggle - Sophisticated Button */}
             <button
               onClick={() => setAiMode(!aiMode)}
-              className={`p-2 rounded-full transition-all border ${
-                aiMode ? "bg-[#64ffda]/20 border-[#64ffda] text-[#64ffda]" : "border-white/10 text-gray-400 hover:text-white"
+              className={`relative w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 border ${
+                aiMode 
+                  ? "border-[#64ffda] text-[#64ffda] shadow-[0_0_15px_rgba(100,255,218,0.2)]" 
+                  : "border-white/10 text-gray-400 hover:border-white/30"
               }`}
             >
-              <FaBrain className={`w-3 h-3 md:w-4 md:h-4 ${aiMode ? "animate-pulse" : ""}`} />
+              <FaBrain className={`w-3.5 h-3.5 ${aiMode ? "animate-pulse" : ""}`} />
             </button>
 
-            {/* Language Switcher - Desktop Only */}
-            <div className="hidden sm:flex items-center bg-white/5 rounded-full p-1 border border-white/10">
-              {['en', 'ja'].map((lang) => (
-                <button
-                  key={lang}
-                  onClick={() => i18n.changeLanguage(lang)}
-                  className={`px-2 py-1 rounded-full text-[10px] font-bold transition-all ${
-                    i18n.language === lang ? "bg-[#64ffda] text-[#0a192f]" : "text-gray-400 hover:text-white"
-                  }`}
-                >
-                  {lang.toUpperCase()}
-                </button>
+            {/* Language Switcher - Vertical Separator */}
+            <div className="hidden sm:flex items-center space-x-3 text-[10px] tracking-widest font-bold">
+              {['en', 'ja'].map((lang, i) => (
+                <React.Fragment key={lang}>
+                  <button
+                    onClick={() => i18n.changeLanguage(lang)}
+                    className={`transition-all duration-300 ${
+                      i18n.language === lang ? "text-[#64ffda]" : "text-gray-500 hover:text-white"
+                    }`}
+                  >
+                    {lang.toUpperCase()}
+                  </button>
+                  {i === 0 && <span className="text-white/10 h-3 w-[1px] bg-white/10"></span>}
+                </React.Fragment>
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Toggle - Minimalist Bars */}
             <button
-              className="lg:hidden p-2 text-gray-300 hover:text-[#64ffda] transition-colors"
+              className="lg:hidden flex flex-col space-y-1.5"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <FaTimes size={20} /> : (
-                <div className="space-y-1.5">
-                  <span className="block w-6 h-0.5 bg-current"></span>
-                  <span className="block w-4 h-0.5 bg-current ml-auto"></span>
-                  <span className="block w-6 h-0.5 bg-current"></span>
-                </div>
-              )}
+              <span className={`block h-[1px] bg-[#64ffda] transition-all duration-500 ${isMobileMenuOpen ? "w-6 rotate-45 translate-y-2" : "w-6"}`}></span>
+              <span className={`block h-[1px] bg-[#64ffda] transition-all duration-500 ${isMobileMenuOpen ? "opacity-0" : "w-4 ml-auto"}`}></span>
+              <span className={`block h-[1px] bg-[#64ffda] transition-all duration-500 ${isMobileMenuOpen ? "w-6 -rotate-45 -translate-y-2" : "w-6"}`}></span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* MOBILE DROPDOWN MENU */}
+      {/* MOBILE MENU - Full Screen Overlay */}
       <div
-        className={`lg:hidden absolute top-full left-0 w-full bg-[#0a192f] border-t border-white/5 transition-all duration-500 ease-in-out overflow-hidden ${
-          isMobileMenuOpen ? "max-h-screen opacity-100 py-6" : "max-h-0 opacity-0"
+        className={`fixed inset-0 bg-[#0a192f] z-[-1] flex flex-col items-center justify-center transition-all duration-700 ease-in-out ${
+          isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         }`}
       >
-        <div className="flex flex-col items-center space-y-6">
+        <div className="flex flex-col space-y-10 text-center">
           {navItems.map((item, idx) => (
             <a
               key={idx}
               href={`#${item.toLowerCase()}`}
-              className="text-lg font-medium text-gray-300 hover:text-[#64ffda]"
+              className="text-2xl uppercase tracking-[0.4em] font-light text-gray-300 hover:text-[#64ffda] transition-all"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item}
             </a>
           ))}
-          {/* Mobile Language Switcher (Inside Menu) */}
-          <div className="flex sm:hidden space-x-4 border-t border-white/10 pt-6 w-full justify-center">
-             <button onClick={() => i18n.changeLanguage('en')} className={i18n.language === 'en' ? 'text-[#64ffda]' : 'text-gray-400'}>EN</button>
-             <span className="text-white/20">|</span>
-             <button onClick={() => i18n.changeLanguage('ja')} className={i18n.language === 'ja' ? 'text-[#64ffda]' : 'text-gray-400'}>JA</button>
+          <div className="flex justify-center space-x-8 pt-12 border-t border-white/5">
+             <button onClick={() => i18n.changeLanguage('en')} className={`text-[10px] tracking-[0.2em] ${i18n.language === 'en' ? 'text-[#64ffda]' : 'text-gray-500'}`}>ENGLISH</button>
+             <button onClick={() => i18n.changeLanguage('ja')} className={`text-[10px] tracking-[0.2em] ${i18n.language === 'ja' ? 'text-[#64ffda]' : 'text-gray-500'}`}>JAPANESE</button>
           </div>
         </div>
       </div>

@@ -199,9 +199,7 @@ function WhoAmISection() {
         <div className="flex-shrink-0 relative">
           <div className="relative group">
             {/* Rotating Ring */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#64ffda] via-purple-500 to-pink-500 p-[2px] animate-rotate-slow">
-              <div className="w-full h-full rounded-full bg-gray-900"></div>
-            </div>
+            
             
             {/* Main Icon */}
             <div className="relative w-12 h-12 rounded-full bg-gradient-to-tr from-[#64ffda] to-purple-500 flex items-center justify-center text-[#0a192f] font-bold text-lg shadow-lg animate-pulseSlow overflow-hidden">

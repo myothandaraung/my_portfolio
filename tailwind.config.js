@@ -26,6 +26,10 @@ module.exports = {
         slideInUp: 'slideInUp 1s ease forwards',
         pulseSlow: 'pulseSlow 3s ease-in-out infinite',
         pingSlow: 'pingSlow 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+      },
+      letterSpacing: {
+        tighter: '-.05em',
+        widest: '.5em',
       }
     },
   },
