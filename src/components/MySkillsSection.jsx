@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+﻿import React, { useState } from 'react';
 import { FaLaravel, FaReact, FaVuejs, FaAngular, FaNode, FaBootstrap, FaCss3Alt, FaJs, FaHtml5, FaPhp, FaGitAlt, FaBitbucket } from 'react-icons/fa';
 import { SiMysql } from 'react-icons/si';
 
@@ -112,3 +111,4 @@ export default function PremiumSkillsSection() {
     </section>
   );
 }
+
