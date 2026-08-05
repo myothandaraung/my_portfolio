@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { motion, useScroll, useTransform } from "framer-motion";
 import emailjs from "emailjs-com";
 import { FaBrain, FaNetworkWired, FaRobot, FaCode, FaMicrochip, FaSatellite, FaServer, FaTerminal, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
 
 const ContactSection = () => {
   const { t } = useTranslation();
+  const { scrollYProgress } = useScroll();
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const [emailError, setEmailError] = useState("");
   const [aiMode, setAiMode] = useState(false);
+  const [focusedField, setFocusedField] = useState(null);
   const [matrixRain, setMatrixRain] = useState([]);
   const [neuralConnections, setNeuralConnections] = useState([]);
   const [dataStreams, setDataStreams] = useState([]);
-  const [focusedField, setFocusedField] = useState(null);
   const [formProgress, setFormProgress] = useState(0);
+  
+  // Scroll fade effects
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8]);
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [50, 0, 0, -50]);
   
   const aiIcons = [FaServer, FaBrain, FaNetworkWired, FaRobot, FaCode, FaMicrochip, FaSatellite, FaTerminal];
   const techSymbols = ['{ }', '< />', '[ ]', '( )', '||', '&&', '++', '--', '=>', '<='];
@@ -181,9 +188,10 @@ const ContactSection = () => {
   }, [formData]);
 
   return (
-    <section
+    <motion.section
       id="contact"
       className="relative py-20 px-4 sm:px-8 text-white overflow-hidden"
+      style={{ opacity, scale, y }}
     >
       {/* AI Background Effects */}
       {aiMode && (
@@ -428,7 +436,7 @@ const ContactSection = () => {
           </button>
         </form>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

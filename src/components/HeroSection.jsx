@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import {
   FaFacebookF,
   FaTwitter,
@@ -14,9 +15,14 @@ import profileImage from "../assets/profile.png";
 
 function HeroSection() {
   const { t } = useTranslation();
+  const { scrollYProgress } = useScroll();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [textGlitch, setTextGlitch] = useState(false);
+
+  // Parallax effect based on scroll
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -37,14 +43,19 @@ function HeroSection() {
   const aiIcons = [FaCode, FaRobot, FaBrain, FaNetworkWired];
 
   return (
-    <section
+    <motion.section
       id="hero-section"
       className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-12 lg:px-20 py-16 md:py-20 min-h-[85vh] md:min-h-[95vh] bg-gradient-to-br from-[#0a0e27] via-[#0d1c3a] to-[#1a1f3a] overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      style={{ y }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
     >
       {/* AI Neural Network Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <motion.div 
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{ opacity }}
+      >
         {/* Animated Grid Pattern */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0" style={{
@@ -59,116 +70,210 @@ function HeroSection() {
         
         {/* Floating AI Particles */}
         {[...Array(20)].map((_, i) => (
-          <div
+          <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-[#64ffda] rounded-full animate-pulseSlow"
+            className="absolute w-1 h-1 bg-[#64ffda] rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
               boxShadow: '0 0 10px #64ffda'
             }}
-          ></div>
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.8, 0.3]
+            }}
+            transition={{
+              duration: 3 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 5
+            }}
+          ></motion.div>
         ))}
         
         {/* Dynamic Gradient Orbs */}
-        <div 
-          className="absolute -top-32 -left-32 w-80 h-80 bg-[#64ffda] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulseSlow"
+        <motion.div 
+          className="absolute -top-32 -left-32 w-80 h-80 bg-[#64ffda] rounded-full mix-blend-screen filter blur-3xl opacity-20"
           style={{
             transform: `translate(${mousePosition.x * 0.05}px, ${mousePosition.y * 0.05}px)`
           }}
-        ></div>
-        <div 
-          className="absolute bottom-[-100px] right-[-100px] w-96 h-96 bg-purple-500 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulseSlow"
+          animate={{
+            scale: [1, 1.1, 1]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        ></motion.div>
+        <motion.div 
+          className="absolute bottom-[-100px] right-[-100px] w-96 h-96 bg-purple-500 rounded-full mix-blend-screen filter blur-3xl opacity-10"
           style={{
             transform: `translate(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03}px)`
           }}
-        ></div>
-        <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulseSlow"
-          style={{
-            animationDelay: '2s',
-            transform: `translate(${-mousePosition.x * 0.02}px, ${-mousePosition.y * 0.02}px)`
+          animate={{
+            scale: [1, 1.05, 1]
           }}
-        ></div>
-      </div>
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        ></motion.div>
+      </motion.div>
 
       {/* Left Content (Text and CTA) */}
-      <div className="relative z-10 w-full md:w-3/5 flex flex-col items-center md:items-start text-center md:text-left">
-        
+      <motion.div 
+        className="relative z-10 w-full md:w-3/5 flex flex-col items-center md:items-start text-center md:text-left"
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
         {/* Elegant Pre-title */}
-        <div className="overflow-hidden mb-4">
-          <p className="text-[#64ffda] uppercase tracking-[0.4em] text-xs md:text-sm font-medium animate-revealUp">
+        <motion.div className="overflow-hidden mb-4">
+          <motion.p 
+            className="text-[#64ffda] uppercase tracking-[0.4em] text-xs md:text-sm font-medium"
+            initial={{ y: 50 }}
+            whileInView={{ y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             {t("hero.hello")}
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Main Name/Title */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight tracking-tight">
+        <motion.h1 
+          className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight tracking-tight"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           Myo Thandar <span className="font-serif italic text-[#64ffda]">Aung</span>
-        </h1>
+        </motion.h1>
 
         {/* Refined Divider */}
-        <div className="w-24 h-[1px] bg-gradient-to-r from-[#64ffda] to-transparent mb-8" />
+        <motion.div 
+          className="w-24 h-[1px] bg-gradient-to-r from-[#64ffda] to-transparent mb-8"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          viewport={{ once: true }}
+        />
 
         {/* Elegant Tagline */}
-        <p className="text-gray-400 text-lg md:text-xl max-w-xl font-light leading-relaxed mb-10 tracking-wide">
+        <motion.p 
+          className="text-gray-400 text-lg md:text-xl max-w-xl font-light leading-relaxed mb-10 tracking-wide"
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
+        >
           {t("hero.description")}
-        </p>
+        </motion.p>
 
         {/* Sophisticated CTA */}
-        <div className="flex flex-col sm:flex-row items-center gap-8">
-          <button
+        <motion.div 
+          className="flex flex-col sm:flex-row items-center gap-8"
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <motion.button
             onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
             className="group relative px-12 py-4 overflow-hidden bg-transparent border border-[#64ffda]/30 transition-all duration-500 hover:border-[#64ffda]"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             {/* Hover Fill Effect */}
-            <div className="absolute inset-0 w-0 bg-[#64ffda] transition-all duration-500 ease-out group-hover:w-full" />
+            <motion.div 
+              className="absolute inset-0 bg-[#64ffda]"
+              initial={{ width: 0 }}
+              whileHover={{ width: "100%" }}
+              transition={{ duration: 0.3 }}
+            />
             <span className="relative text-[#64ffda] group-hover:text-[#0a0e27] uppercase tracking-[0.2em] text-sm font-semibold transition-colors duration-500">
               {t("hero.contactButton")}
             </span>
-          </button>
+          </motion.button>
           
-          <div className="flex space-x-6">
+          <motion.div 
+            className="flex space-x-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            viewport={{ once: true }}
+          >
             {[<FaFacebookF />, <FaLinkedinIn />, <FaWhatsapp />].map((icon, i) => (
-              <a key={i} href="#" className="text-gray-500 hover:text-[#64ffda] transition-colors duration-300 text-lg">
+              <motion.a 
+                key={i} 
+                href="#" 
+                className="text-gray-500 hover:text-[#64ffda] transition-colors duration-300 text-lg"
+                whileHover={{ scale: 1.2, color: "#64ffda" }}
+                whileTap={{ scale: 0.9 }}
+              >
                 {icon}
-              </a>
+              </motion.a>
             ))}
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
 
       {/* Right Content - The "Art Piece" Profile */}
-      <div className="relative mt-16 md:mt-0 w-full md:w-2/5 flex justify-center items-center">
-        
+      <motion.div 
+        className="relative mt-16 md:mt-0 w-full md:w-2/5 flex justify-center items-center"
+        initial={{ x: 100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        viewport={{ once: true }}
+      >
         {/* Minimalist Framing */}
-        <div className="relative p-4 md:p-8">
+        <motion.div 
+          className="relative p-4 md:p-8"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.5 }}
+        >
           {/* Subtle Rotating Border */}
-          <div className="absolute inset-0 border-[1px] border-[#64ffda]/20 rounded-full scale-110" />
+          <motion.div 
+            className="absolute inset-0 border-[1px] border-[#64ffda]/20 rounded-full scale-110"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          />
           
           {/* Main Image Container */}
-          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out">
+          <motion.div 
+            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
+            whileHover={{ scale: 1.02 }}
+          >
             <div className="absolute inset-0 bg-[#0a0e27] rounded-full overflow-hidden border border-white/5 shadow-2xl">
-              <img
+              <motion.img
                 src={profileImage}
                 alt="Profile"
-                className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-[2s]"
+                className="w-full h-full object-cover"
+                initial={{ scale: 1.1 }}
+                whileHover={{ scale: 1 }}
+                transition={{ duration: 2 }}
                 onError={(e) => { e.target.src = 'https://via.placeholder.com/400'; }}
               />
             </div>
             
             {/* Artistic Floating Elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 border-t border-r border-[#64ffda]/40" />
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b border-l border-[#64ffda]/40" />
-          </div>
-        </div>
-      </div>
-
-      {/* Right Content (Profile Image & Social Icons inside bounds) */}
-      
-    </section>
+            <motion.div 
+              className="absolute -top-4 -right-4 w-24 h-24 border-t border-r border-[#64ffda]/40"
+              animate={{ rotate: [0, 5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div 
+              className="absolute -bottom-4 -left-4 w-24 h-24 border-b border-l border-[#64ffda]/40"
+              animate={{ rotate: [0, -5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 }
 

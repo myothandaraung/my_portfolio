@@ -1,15 +1,22 @@
 import React, { useRef, useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { FaAngleLeft, FaAngleRight, FaStarOfLife, FaBrain, FaNetworkWired, FaRobot, FaCode, FaMicrochip, FaSatellite, FaServer, FaTerminal } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
 function CategorySlider() {
   const { t } = useTranslation();
+  const { scrollYProgress } = useScroll();
   const scrollContainerRef = useRef(null);
   const scrollIntervalRef = useRef(null);
   const [aiMode, setAiMode] = useState(false);
   const [matrixRain, setMatrixRain] = useState([]);
   const [neuralConnections, setNeuralConnections] = useState([]);
   const [hoveredCategory, setHoveredCategory] = useState(null);
+
+  // Scroll fade effects
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8]);
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [50, 0, 0, -50]);
 
   const categories = t("categories", { returnObjects: true }) || [];
   const aiIcons = [FaServer, FaBrain, FaNetworkWired, FaRobot, FaCode, FaMicrochip, FaSatellite];
@@ -130,10 +137,18 @@ function CategorySlider() {
   };
 
   return (
-    <div className="relative bg-[#112240] py-6 px-6 overflow-hidden rounded-full my-8 group">
+    <motion.div 
+      className="relative bg-[#112240] py-6 px-6 overflow-hidden rounded-full my-8 group"
+      style={{ opacity, scale, y }}
+    >
       {/* AI Background Effects */}
       {aiMode && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          className="absolute inset-0 overflow-hidden pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           {/* Matrix Rain */}
           <div className="absolute inset-0 opacity-10">
             {matrixRain.map((drop) => (
@@ -181,7 +196,7 @@ function CategorySlider() {
               backgroundSize: '40px 40px'
             }}></div>
           </div>
-        </div>
+        </motion.div>
       )}
       
       <div className="relative z-10 container mx-auto flex items-center justify-center">
@@ -305,7 +320,7 @@ function CategorySlider() {
           scrollbar-width: none;
         }
       `}</style>
-    </div>
+    </motion.div>
   );
 }
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { FaSearch, FaTimes, FaBrain, FaNetworkWired, FaRobot, FaCode, FaMicrochip, FaSatellite, FaServer } from "react-icons/fa";
 import myLogo from "../../public/images/logo1.svg";
 import "../App.css";
@@ -6,11 +7,16 @@ import { useTranslation } from "react-i18next";
 
 function Header() {
   const { t, i18n } = useTranslation();
+  const { scrollYProgress } = useScroll();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [aiMode, setAiMode] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  // Scroll fade effects for header
+  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [1, 1, 1, 0.8]);
+  const y = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 0, 0, -10]);
 
   const navItems = t("nav", { returnObjects: true }) || ["About", "Skills", "Projects", "Portfolio", "Contact"];
 
@@ -126,12 +132,13 @@ function Header() {
   }, [searchQuery]);
 
   return (
-    <header
+    <motion.header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${
         scrolled
           ? "bg-[#0a192f]/90 shadow-[0_10px_30px_-10px_rgba(2,12,27,0.7)] backdrop-blur-md py-3"
           : "bg-transparent py-8"
       }`}
+      style={{ opacity, y }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center">
@@ -246,7 +253,7 @@ function Header() {
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
 

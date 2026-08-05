@@ -1,13 +1,20 @@
 // src/components/AboutSection.js
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { FaBrain, FaNetworkWired, FaRobot, FaCode, FaMicrochip, FaSatellite, FaServer, FaTerminal } from "react-icons/fa";
 function WhoAmISection() {
   const { t } = useTranslation();
+  const { scrollYProgress } = useScroll();
   const [aiMode, setAiMode] = useState(false);
   const [matrixRain, setMatrixRain] = useState([]);
   const [neuralNodes, setNeuralNodes] = useState([]);
   const [activeParagraph, setActiveParagraph] = useState(0);
+  
+  // Scroll fade effects
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8]);
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [50, 0, 0, -50]);
   
   const aiIcons = [FaServer, FaBrain, FaNetworkWired, FaRobot, FaCode, FaMicrochip, FaSatellite, FaTerminal];
   const techSymbols = ['{ }', '< />', '[ ]', '( )', '||', '&&', '++', '--'];
@@ -58,7 +65,11 @@ function WhoAmISection() {
     return () => clearInterval(paragraphInterval);
   }, []);
   return (
-    <section id="about" className="relative py-20 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-[#0a192f] to-[#112240] text-white overflow-hidden">
+    <motion.section 
+      id="about" 
+      className="relative py-20 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-[#0a192f] to-[#112240] text-white overflow-hidden"
+      style={{ opacity, scale, y }}
+    >
       {/* AI Background Effects */}
       {aiMode && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -295,7 +306,7 @@ function WhoAmISection() {
           )}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
