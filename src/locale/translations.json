@@ -95,7 +95,7 @@
       {
         "title": "Professional Craftsmen Borrowing System",
         "company": "",
-        "dates": "01/2025 - 10-2025",
+        "dates": "01/2025 - 10/2025",
         "description": "A platform that connects clients directly with skilled carpenters for small construction projects, cutting out middlemen and extra costs.",
         "technologies": [
           "PHP",
@@ -318,7 +318,7 @@
       {
         "title": "Excelインポーター",
         "company": "",
-        "dates": "2025/06 - 現在",
+        "dates": "2025/06 - 09/2025",
         "description": "Excelアップロードファイル、パターンのアップロード、データのインポートを管理するシステム。",
         "technologies": [
           "PHP",
@@ -334,7 +334,7 @@
       {
         "title": "職人マッチングプラットフォーム",
         "company": "",
-        "dates": "2025/01 - 現在",
+        "dates": "2025/01 - 10/2025",
         "description": "クライアントと熟練職人を直接つなぐプラットフォーム。中間業者や余分なコストを排除。",
         "technologies": [
           "PHP",

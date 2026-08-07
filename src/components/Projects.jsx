@@ -1,5 +1,5 @@
 ﻿import { useMemo, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Calendar, Building2 } from "lucide-react";
 import { motion as Motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
@@ -9,7 +9,7 @@ const projectTimestamp = (dates = "") => {
   const yearFirst = dates.match(/(\d{4})\/(\d{1,2})/);
   return yearFirst ? Number(yearFirst[1]) * 12 + Number(yearFirst[2]) : 0;
 };
-const isCurrent = (dates = "") => /current|present|現|ç¾|現在/i.test(dates);
+const isCurrent = (dates = "") => /current|present|現|ç¾|現在/i.test(dates);
 
 function ProjectCard({ project, index, featured = false }) {
   return <Motion.article className={`project-card ${featured ? "project-card--featured" : ""}`} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: .5 }} viewport={{ once: true, amount: .12 }}>
@@ -29,7 +29,7 @@ function ProjectCard({ project, index, featured = false }) {
 
 export default function Projects() {
   const { t } = useTranslation();
-  const [visibleArchive, setVisibleArchive] = useState(4);
+  const [visibleArchive, setVisibleArchive] = useState(3);
   const projects = useMemo(() => {
     const translated = t("projects", { returnObjects: true });
     return Array.isArray(translated) ? [...translated].sort((a, b) => projectTimestamp(b.dates) - projectTimestamp(a.dates)) : [];
@@ -45,4 +45,3 @@ export default function Projects() {
     {visibleArchive < archive.length && <button className="button button--outline load-more" onClick={() => setVisibleArchive(archive.length)}>View older projects <span>+{archive.length - visibleArchive}</span></button>}
   </section>;
 }
-
