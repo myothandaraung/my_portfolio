@@ -2,9 +2,98 @@
 import emailjs from "emailjs-com";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { motion as Motion } from "framer-motion";
 export default function ContactSection() {
-  const { t } = useTranslation(); const [status, setStatus] = useState(""); const [loading, setLoading] = useState(false); const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
-  const change = e => setForm({ ...form, [e.target.name]: e.target.value });
-  const submit = async e => { e.preventDefault(); setLoading(true); setStatus(""); try { await emailjs.send("service_f2n4xyl", "template_acs0vrf", form, "A1j4naTbjz_1lfwaa"); setStatus("Thanks — your message has been sent."); setForm({ name: "", email: "", phone: "", subject: "", message: "" }); } catch { setStatus("Something went wrong. Please try again or email me directly."); } finally { setLoading(false); } };
-  return <section id="contact" className="contact section-space"><div className="section-wrap"><div className="section-label section-label--light"><span>04</span> Contact</div><div className="contact-grid"><div className="contact-copy"><h2>Have a project in mind? <em>Let's make it happen.</em></h2><p>Tell me a little about what you are building, the challenge you are solving, and where I can help.</p><a href="mailto:myothandaraung713@gmail.com"><Mail size={18} /> hello@myothandaraung.com</a></div><form onSubmit={submit}><div className="form-row"><label><span>Your name</span><input required name="name" value={form.name} onChange={change} placeholder={t("contact.name")} /></label><label><span>Email address</span><input required type="email" name="email" value={form.email} onChange={change} placeholder={t("contact.email")} /></label></div><label><span>Subject</span><input required name="subject" value={form.subject} onChange={change} placeholder={t("contact.subject")} /></label><label><span>Tell me about the project</span><textarea required name="message" value={form.message} onChange={change} rows="5" placeholder={t("contact.message")} /></label>{status && <p className="form-status">{status}</p>}<button className="button button--light" disabled={loading}>{loading ? "Sending..." : "Send inquiry"}<ArrowUpRight size={18} /></button></form></div></div></section>;
+  const { t } = useTranslation();
+  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+    const submit = async e => { e.preventDefault(); setLoading(true); setStatus(""); try { await emailjs.send("service_f2n4xyl", "template_acs0vrf", form, "A1j4naTbjz_1lfwaa"); setStatus("Thanks — your message has been sent."); setForm({ name: "", email: "", phone: "", subject: "", message: "" }); } catch { setStatus("Something went wrong. Please try again or email me directly."); } finally { setLoading(false); } };
+  const change = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  return (
+    <section id="contact" className="contact section-space">
+      <Motion.div
+        className="section-wrap"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="section-label section-label--light">
+          <span>04</span> Contact
+        </div>
+        <div className="contact-grid">
+          <div className="contact-copy">
+            <h2>
+              Have a project in mind? <em>Let's make it happen.</em>
+            </h2>
+            <p>
+              Tell me a little about what you are building, the challenge you
+              are solving, and where I can help.
+            </p>
+            <a href="mailto:myothandaraung713@gmail.com">
+              <Mail size={18} /> hello@myothandaraung.com
+            </a>
+          </div>
+          <form onSubmit={submit}>
+            <div className="form-row">
+              <label>
+                <span>Your name</span>
+                <input
+                  required
+                  name="name"
+                  value={form.name}
+                  onChange={change}
+                  placeholder={t("contact.name")}
+                />
+              </label>
+              <label>
+                <span>Email address</span>
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={change}
+                  placeholder={t("contact.email")}
+                />
+              </label>
+            </div>
+            <label>
+              <span>Subject</span>
+              <input
+                required
+                name="subject"
+                value={form.subject}
+                onChange={change}
+                placeholder={t("contact.subject")}
+              />
+            </label>
+            <label>
+              <span>Tell me about the project</span>
+              <textarea
+                required
+                name="message"
+                value={form.message}
+                onChange={change}
+                rows="5"
+                placeholder={t("contact.message")}
+              />
+            </label>
+            {status && <p className="form-status">{status}</p>}
+            <button className="button button--light" disabled={loading}>
+              {loading ? "Sending..." : "Send inquiry"}
+              <ArrowUpRight size={18} />
+            </button>
+          </form>
+        </div>
+      </Motion.div>
+    </section>
+  );
 }

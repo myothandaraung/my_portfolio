@@ -38,8 +38,8 @@ export default function Projects() {
   const archive = projects.filter(project => !isCurrent(project.dates));
 
   return <section id="projects" className="projects section-wrap section-space">
-    <div className="section-label"><span>03</span> Selected work</div>
-    <div className="projects-heading"><h2>Products made for <em>real-world use.</em></h2><p>Selected work arranged from the latest engagements to earlier projects, spanning platforms, internal tools, and customer experiences.</p></div>
+    <Motion.div className="section-label" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}><span>03</span> Selected work</Motion.div>
+    <Motion.div className="projects-heading" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}><h2>Products made for <em>real-world use.</em></h2><p>Selected work arranged from the latest engagements to earlier projects, spanning platforms, internal tools, and customer experiences.</p></Motion.div>
     {active.length > 0 && <div className="project-group"><div className="project-group-title"><span>In progress</span><small>{active.length} current projects</small></div><div className="featured-projects">{active.map((project, index) => <ProjectCard key={project.title} project={project} index={index} featured />)}</div></div>}
     <div className="project-group project-group--archive"><div className="project-group-title"><span>Project archive</span><small>Newest to oldest</small></div><div className="project-grid">{archive.slice(0, visibleArchive).map((project, index) => <ProjectCard key={project.title} project={project} index={index + active.length} />)}</div></div>
     {visibleArchive < archive.length && <button className="button button--outline load-more" onClick={() => setVisibleArchive(archive.length)}>View older projects <span>+{archive.length - visibleArchive}</span></button>}
