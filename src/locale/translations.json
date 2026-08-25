@@ -80,7 +80,7 @@
         "title": "Excel Importer",
         "company": "",
         "dates": "06/2025 - 09/2025",
-        "description": "A system that manages Excel upload files, upload patterns, and imports data.",
+        "description": "A system that manages Excel upload files, upload patterns, and imports data. Developed the API using Java with the Spring Boot framework, database using MySQL, and web pages using VueJS and Tailwind CSS, deployed with Docker.",
         "technologies": [
           "Java",
           "Springboot",
@@ -96,7 +96,7 @@
         "title": "Professional Craftsmen Borrowing System",
         "company": "",
         "dates": "01/2025 - 10/2025",
-        "description": "A platform that connects clients directly with skilled carpenters for small construction projects, cutting out middlemen and extra costs.",
+        "description": "A platform that connects clients directly with skilled carpenters for small construction projects, cutting out middlemen and extra costs. Developed the API using PHP with the Laravel framework, database using MySQL, and web pages using VueJS and Tailwind CSS, deployed with Docker.",
         "technologies": [
           "PHP",
           "Laravel",
@@ -112,7 +112,7 @@
         "title": "POS System",
         "company": "Seattle Consulting Myanmar",
         "dates": "06/2020 - 08/2020",
-        "description": "A sale and inventory management system with barcode scanning and receipt generation.",
+        "description": "A sale and inventory management system with barcode scanning and receipt generation. Developed as a desktop application using C# with .NET and a PostgreSQL database.",
         "technologies": [
           "C#",
           ".NET",
@@ -126,7 +126,7 @@
         "title": "Media Management System",
         "company": "Seattle Consulting Myanmar",
         "dates": "09/2020 - 07/2021",
-        "description": "An advertising and report management system for media with analytics dashboard.",
+        "description": "An advertising and report management system for media with an analytics dashboard. Developed web pages using React with Redux Saga, styled with Bootstrap and SCSS.",
         "technologies": [
           "React",
           "Bootstrap",
@@ -140,7 +140,7 @@
         "title": "Glove Simulation System",
         "company": "Seattle Consulting Myanmar",
         "dates": "09/2021 - 12/2021",
-        "description": "A 3D configurator for customizing and ordering baseball gloves with real-time preview.",
+        "description": "A 3D configurator for customizing and ordering baseball gloves with real-time preview. Developed the backend using PHP with the Laravel framework and MySQL, and the 3D preview using Three.js and JavaScript.",
         "technologies": [
           "PHP",
           "Laravel",
@@ -155,7 +155,7 @@
         "title": "Travel and Tour System",
         "company": "Seattle Consulting Myanmar",
         "dates": "01/2022 - 02/2022",
-        "description": "A comprehensive system for managing tour packages, bookings, and customer relationships.",
+        "description": "A comprehensive system for managing tour packages, bookings, and customer relationships. Developed the API using PHP with the Laravel framework and MySQL, and web pages using Vue.js with REST API integration.",
         "technologies": [
           "PHP",
           "Laravel",
@@ -170,7 +170,7 @@
         "title": "Evaluation Management System Administrator and App",
         "company": "Seattle Consulting Myanmar",
         "dates": "03/2022 - 08/2022",
-        "description": "A system for the evaluation of shop managers and staff, including commitments and MVP points.",
+        "description": "A system for the evaluation of shop managers and staff, including commitments and MVP points. Developed the API using PHP with the Laravel framework and MySQL, the admin web pages using HTML, and the mobile app using Angular and Ionic.",
         "technologies": [
           "PHP",
           "Laravel",
@@ -186,7 +186,7 @@
         "title": "Class Management System",
         "company": "Seattle Consulting Myanmar",
         "dates": "09/2022 - 11/2022",
-        "description": "A system for the management of students, classes, courses, and schedules.",
+        "description": "A system for the management of students, classes, courses, and schedules. Developed the API using PHP, database using MySQL, and web pages using VueJS.",
         "technologies": [
           "PHP",
           "MySQL",
@@ -199,7 +199,7 @@
         "title": "Online Order Management System",
         "company": "Seattle Consulting Myanmar",
         "dates": "12/2022 - 05/2023",
-        "description": "A system for ordering kitchen products and managing payment data.",
+        "description": "A system for ordering kitchen products and managing payment data. Developed the API using PHP with the Zend Framework and a MySQL database.",
         "technologies": [
           "PHP",
           "Zend Framework",
@@ -212,7 +212,7 @@
         "title": "Online Translation System",
         "company": "Seattle Consulting Myanmar",
         "dates": "10/2023 - 05/2024",
-        "description": "A system for managing Japanese translation services.",
+        "description": "A system for managing Japanese translation services. Developed the API using PHP with the Laravel framework and MySQL, and web pages using ReactJS.",
         "technologies": [
           "PHP",
           "Laravel",
@@ -379,7 +379,7 @@
         "title": "Excelインポーター",
         "company": "",
         "dates": "2025/06 - 2025/09",
-        "description": "Excelアップロードファイル、パターンのアップロード、データのインポートを管理するシステム。",
+        "description": "Excelアップロードファイル、アップロードパターン、データのインポートを管理するシステム。Java、Spring BootでAPIを、MySQLでデータベースを、VueJSとTailwind CSSで画面を開発し、Dockerでデプロイ。",
         "technologies": [
           "Java",
           "Springboot",
@@ -395,7 +395,7 @@
         "title": "職人マッチングプラットフォーム",
         "company": "",
         "dates": "2025/01 - 2025/10",
-        "description": "クライアントと熟練職人を直接つなぐプラットフォーム。中間業者や余分なコストを排除。",
+        "description": "クライアントと熟練職人を直接つなぐプラットフォーム。中間業者や余分なコストを排除。PHP、LaravelでAPIを、MySQLでデータベースを、VueJSとTailwind CSSで画面を開発し、Dockerでデプロイ。",
         "technologies": [
           "PHP",
           "Laravel",
@@ -411,7 +411,7 @@
         "title": "POSシステム",
         "company": "シアトルコンサルティングミャンマー",
         "dates": "2020/06 - 2020/08",
-        "description": "バーコードスキャンとレシート生成機能を備えた販売および在庫管理システム。",
+        "description": "バーコードスキャンとレシート生成機能を備えた販売および在庫管理システム。C#と.NET、PostgreSQLデータベースを使用したデスクトップアプリケーションとして開発。",
         "technologies": [
           "C#",
           ".NET",
@@ -425,7 +425,7 @@
         "title": "メディア管理システム",
         "company": "シアトルコンサルティングミャンマー",
         "dates": "2020/09 - 2021/07",
-        "description": "分析ダッシュボード付きのメディア用広告およびレポート管理システム。",
+        "description": "分析ダッシュボード付きのメディア用広告およびレポート管理システム。ReactとRedux Sagaで画面を開発し、BootstrapとSCSSでスタイリング。",
         "technologies": [
           "React",
           "Bootstrap",
@@ -439,7 +439,7 @@
         "title": "グローブシミュレーションシステム",
         "company": "シアトルコンサルティングミャンマー",
         "dates": "2021/09 - 2021/12",
-        "description": "野球グローブをリアルタイムプレビューでカスタマイズおよび注文できる3Dコンフィギュレーター。",
+        "description": "野球グローブをリアルタイムプレビューでカスタマイズおよび注文できる3Dコンフィギュレーター。PHP、Laravel、MySQLでバックエンドを、Three.jsとJavaScriptで3Dプレビューを開発。",
         "technologies": [
           "PHP",
           "Laravel",
@@ -454,7 +454,7 @@
         "title": "旅行・ツアー管理システム",
         "company": "シアトルコンサルティングミャンマー",
         "dates": "2022/01 - 2022/02",
-        "description": "ツアーパッケージ、予約、顧客関係を管理する包括的なシステム。",
+        "description": "ツアーパッケージ、予約、顧客関係を管理する包括的なシステム。PHP、Laravel、MySQLでAPIを、Vue.jsとREST API連携で画面を開発。",
         "technologies": [
           "PHP",
           "Laravel",
@@ -469,7 +469,7 @@
         "title": "評価管理システム（管理者およびアプリ）",
         "company": "シアトルコンサルティングミャンマー",
         "dates": "2022/03 - 2022/08",
-        "description": "店舗マネージャーおよびスタッフの評価を行うシステム（コミットメントやMVPポイント含む）。",
+        "description": "店舗マネージャーおよびスタッフの評価を行うシステム（コミットメントやMVPポイント含む）。PHP、Laravel、MySQLでAPIを、HTMLで管理画面を、AngularとIonicでモバイルアプリを開発。",
         "technologies": [
           "PHP",
           "Laravel",
@@ -485,7 +485,7 @@
         "title": "クラス管理システム",
         "company": "シアトルコンサルティングミャンマー",
         "dates": "2022/09 - 2022/11",
-        "description": "学生、クラス、コース、スケジュールを管理するシステム。",
+        "description": "学生、クラス、コース、スケジュールを管理するシステム。PHPでAPIを、MySQLでデータベースを、VueJSで画面を開発。",
         "technologies": [
           "PHP",
           "MySQL",
@@ -498,7 +498,7 @@
         "title": "オンライン注文管理システム",
         "company": "シアトルコンサルティングミャンマー",
         "dates": "2022/12 - 2023/05",
-        "description": "キッチン製品の注文および支払いデータを管理するシステム。",
+        "description": "キッチン製品の注文および支払いデータを管理するシステム。PHP（Zend Framework）でAPIを、MySQLでデータベースを開発。",
         "technologies": [
           "PHP",
           "Zend Framework",
@@ -511,7 +511,7 @@
         "title": "オンライン翻訳システム",
         "company": "シアトルコンサルティングミャンマー",
         "dates": "2023/10 - 2024/05",
-        "description": "日本語翻訳サービスを管理するシステム。",
+        "description": "日本語翻訳サービスを管理するシステム。PHP、Laravel、MySQLでAPIを、ReactJSで画面を開発。",
         "technologies": [
           "PHP",
           "Laravel",
