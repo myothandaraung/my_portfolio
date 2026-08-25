@@ -1,7 +1,7 @@
-﻿import { useMemo, useState } from "react";
-import { ArrowUpRight, Calendar, Building2 } from "lucide-react";
+import { useMemo, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { motion as Motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 
 const projectTimestamp = (dates = "") => {
   const monthFirst = dates.match(/(\d{1,2})\/(\d{4})/);
@@ -12,12 +12,13 @@ const projectTimestamp = (dates = "") => {
 const isCurrent = (dates = "") => /current|present|現|ç¾|現在/i.test(dates);
 
 function ProjectCard({ project, index, featured = false }) {
+  const { t } = useTranslation();
   return <Motion.article className={`project-card ${featured ? "project-card--featured" : ""}`} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: .5 }} viewport={{ once: true, amount: .12 }}>
     <div className="project-image">
       <img src={project.image} alt={`${project.title} interface`} loading="lazy" />
       <span className="project-number">{String(index + 1).padStart(2, "0")}</span>
-      {isCurrent(project.dates) && <span className="project-current"><i /> Current project</span>}
-      <a href={project.link || "#"} className="project-arrow" aria-label={`View ${project.title}`}><ArrowUpRight size={20} /></a>
+      {isCurrent(project.dates) && <span className="project-current"><i /> {t("ui.currentBadge")}</span>}
+      <a href={project.link || "#"} className="project-arrow" aria-label={project.title}><ArrowUpRight size={20} /></a>
     </div>
     <div className="project-info">
       <div className="project-title-row"><div><p className="project-date">{project.dates}</p><h3>{project.title}</h3></div>{project.company && <span className="project-company">{project.company}</span>}</div>
@@ -38,10 +39,10 @@ export default function Projects() {
   const archive = projects.filter(project => !isCurrent(project.dates));
 
   return <section id="projects" className="projects section-wrap section-space">
-    <Motion.div className="section-label" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}><span>03</span> Selected work</Motion.div>
-    <Motion.div className="projects-heading" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}><h2>Products made for <em>real-world use.</em></h2><p>Selected work arranged from the latest engagements to earlier projects, spanning platforms, internal tools, and customer experiences.</p></Motion.div>
-    {active.length > 0 && <div className="project-group"><div className="project-group-title"><span>In progress</span><small>{active.length} current projects</small></div><div className="featured-projects">{active.map((project, index) => <ProjectCard key={project.title} project={project} index={index} featured />)}</div></div>}
-    <div className="project-group project-group--archive"><div className="project-group-title"><span>Project archive</span><small>Newest to oldest</small></div><div className="project-grid">{archive.slice(0, visibleArchive).map((project, index) => <ProjectCard key={project.title} project={project} index={index + active.length} />)}</div></div>
-    {visibleArchive < archive.length && <button className="button button--outline load-more" onClick={() => setVisibleArchive(archive.length)}>View older projects <span>+{archive.length - visibleArchive}</span></button>}
+    <Motion.div className="section-label" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}><span>03</span> {t("ui.projectsLabel")}</Motion.div>
+    <Motion.div className="projects-heading" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}><h2>{t("ui.projectsTitle")} <em>{t("ui.projectsTitleEm")}</em></h2><p>{t("ui.projectsIntro")}</p></Motion.div>
+    {active.length > 0 && <div className="project-group"><div className="project-group-title"><span>{t("ui.groupActive")}</span><small><Trans i18nKey="ui.groupActiveCount" values={{ count: active.length }} /></small></div><div className="featured-projects">{active.map((project, index) => <ProjectCard key={project.title} project={project} index={index} featured />)}</div></div>}
+    <div className="project-group project-group--archive"><div className="project-group-title"><span>{t("ui.groupArchive")}</span><small>{t("ui.archiveNote")}</small></div><div className="project-grid">{archive.slice(0, visibleArchive).map((project, index) => <ProjectCard key={project.title} project={project} index={index + active.length} />)}</div></div>
+    {visibleArchive < archive.length && <button className="button button--outline load-more" onClick={() => setVisibleArchive(archive.length)}>{t("ui.viewMore")} <span>+{archive.length - visibleArchive}</span></button>}
   </section>;
 }

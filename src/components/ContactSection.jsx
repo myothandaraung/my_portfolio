@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import emailjs from "emailjs-com";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -14,7 +14,7 @@ export default function ContactSection() {
     subject: "",
     message: "",
   });
-    const submit = async e => { e.preventDefault(); setLoading(true); setStatus(""); try { await emailjs.send("service_f2n4xyl", "template_acs0vrf", form, "A1j4naTbjz_1lfwaa"); setStatus("Thanks — your message has been sent."); setForm({ name: "", email: "", phone: "", subject: "", message: "" }); } catch { setStatus("Something went wrong. Please try again or email me directly."); } finally { setLoading(false); } };
+    const submit = async e => { e.preventDefault(); setLoading(true); setStatus(""); try { await emailjs.send("service_f2n4xyl", "template_acs0vrf", form, "A1j4naTbjz_1lfwaa"); setStatus(t("ui.sentStatus")); setForm({ name: "", email: "", phone: "", subject: "", message: "" }); } catch { setStatus(t("ui.errorStatus")); } finally { setLoading(false); } };
   const change = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   return (
     <section id="contact" className="contact section-space">
@@ -26,16 +26,15 @@ export default function ContactSection() {
         transition={{ duration: 0.5 }}
       >
         <div className="section-label section-label--light">
-          <span>04</span> Contact
+          <span>04</span> {t("ui.contactLabel")}
         </div>
         <div className="contact-grid">
           <div className="contact-copy">
             <h2>
-              Have a project in mind? <em>Let's make it happen.</em>
+              {t("ui.contactTitle")} <em>{t("ui.contactTitleEm")}</em>
             </h2>
             <p>
-              Tell me a little about what you are building, the challenge you
-              are solving, and where I can help.
+              {t("ui.contactIntro")}
             </p>
             <a href="mailto:myothandaraung713@gmail.com">
               <Mail size={18} /> hello@myothandaraung.com
@@ -44,7 +43,7 @@ export default function ContactSection() {
           <form onSubmit={submit}>
             <div className="form-row">
               <label>
-                <span>Your name</span>
+                <span>{t("ui.nameLabel")}</span>
                 <input
                   required
                   name="name"
@@ -54,7 +53,7 @@ export default function ContactSection() {
                 />
               </label>
               <label>
-                <span>Email address</span>
+                <span>{t("ui.emailLabel")}</span>
                 <input
                   required
                   type="email"
@@ -66,7 +65,7 @@ export default function ContactSection() {
               </label>
             </div>
             <label>
-              <span>Subject</span>
+              <span>{t("ui.subjectLabel")}</span>
               <input
                 required
                 name="subject"
@@ -76,7 +75,7 @@ export default function ContactSection() {
               />
             </label>
             <label>
-              <span>Tell me about the project</span>
+              <span>{t("ui.messageLabel")}</span>
               <textarea
                 required
                 name="message"
@@ -88,7 +87,7 @@ export default function ContactSection() {
             </label>
             {status && <p className="form-status">{status}</p>}
             <button className="button button--light" disabled={loading}>
-              {loading ? "Sending..." : "Send inquiry"}
+              {loading ? t("ui.sending") : t("ui.sendButton")}
               <ArrowUpRight size={18} />
             </button>
           </form>

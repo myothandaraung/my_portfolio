@@ -856,3 +856,32 @@ footer {
   .project-number { font-size: 2rem; }
   .projects-heading { margin-top: 32px; }
 }
+
+/* Japanese typography: Latin display metrics (tight leading, negative tracking)
+   break CJK line wrapping — relax them when the document language is ja. */
+html[lang="ja"] .hero h1,
+html[lang="ja"] .about h2,
+html[lang="ja"] .skills-heading h2,
+html[lang="ja"] .projects-heading h2,
+html[lang="ja"] .contact h2 {
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+html[lang="ja"] .hero h1 {
+  margin-top: 0;
+}
+html[lang="ja"] .eyebrow,
+html[lang="ja"] .section-label {
+  letter-spacing: 0.12em;
+}
+html[lang="ja"] .about-facts span {
+  letter-spacing: 0.04em;
+}
+html[lang="ja"] .hero-intro,
+html[lang="ja"] .about-copy > p {
+  line-height: 2;
+}
+html[lang="ja"] .project-current {
+  white-space: nowrap;
+}
